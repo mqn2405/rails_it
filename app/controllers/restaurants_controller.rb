@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
+  before_action :check_admin? , except: [:show]
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
   # GET /restaurants
   # GET /restaurants.json

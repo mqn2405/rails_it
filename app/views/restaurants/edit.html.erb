@@ -1,6 +1,11 @@
-<h1>Editing Restaurant</h1>
+<div class="row justify-content-md-center">
+  <h2><b>Editing Restaurant</b></h2>
+</div>
 
 <%= render 'form', restaurant: @restaurant %>
-
-<%= link_to 'Show', @restaurant %> |
-<%= link_to 'Back', restaurants_path %>
+<% if isAdmin? %>
+  <div class="row justify-content-md-center">
+    <%= link_to 'Show', @restaurant %> |
+    <%= link_to 'Back', restaurants_path %>
+  </div>
+<% end %>
