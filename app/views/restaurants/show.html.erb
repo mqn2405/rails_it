@@ -43,7 +43,7 @@
     <% end %>
     <hr>
     <% unless @restaurant.restaurant_reviews.nil? %>
-      <% @restaurant.restaurant_reviews.each_with_index do |res, index| %>
+      <% @restaurant.restaurant_reviews.order("created_at DESC").each_with_index do |res, index| %>
         <div>
           <strong ><%= index + 1 %>. <%= link_to User.find(res.user_id).name, users_show_path(User.find(res.user_id))%> :&nbsp;</strong>
           <div style="overflow: hidden">
