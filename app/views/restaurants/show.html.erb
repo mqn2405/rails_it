@@ -45,7 +45,7 @@
     <% unless @restaurant.restaurant_reviews.nil? %>
       <% @restaurant.restaurant_reviews.each_with_index do |res, index| %>
         <div>
-          <strong><%= index + 1 %>. <%= User.find(res.user_id).name %> :&nbsp;</strong>
+          <strong ><%= index + 1 %>. <%= link_to User.find(res.user_id).name, users_show_path(User.find(res.user_id))%> :&nbsp;</strong>
           <div style="overflow: hidden">
             <%= res.content %>
           </div>
