@@ -1,25 +1,58 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-6">
+    <p>
+      <strong>Name:</strong>
+      <%= @restaurant.name %>
+    </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
+    <p>
+      <strong>Address:</strong>
+      <%= @restaurant.address %>
+    </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @restaurant.address %>
-</p>
+    <p>
+      <strong>Image:</strong>
+      <% if @restaurant.image.attached? %>
+        <br>
+        <%= image_tag @restaurant.image, class: "image_show" %>
+      <% else %>
+        Null
+      <% end %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @restaurant.description %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @restaurant.description %>
+    </p>
+    <% if isAdmin? %>
+      <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+      <%= link_to 'Back', restaurants_path %>
+    <% end %>
+  </div>
+  <div class="col-6">
+    <h2>Review</h2>
+    <%= form_for RestaurantReview.new do |f| %>
+      <div class="form-inline row">
+        <%= f.label :content, class: "col-3" %>
+        <%= f.text_area :content, class: "form-control col-9" %>
+      </div>
+      <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
+      <div class="row justify-content-center" style="margin-top: 2rem">
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    <hr>
+    <% unless @restaurant.restaurant_reviews.nil? %>
+      <% @restaurant.restaurant_reviews.each_with_index do |res, index| %>
+        <div>
+          <strong><%= index + 1 %>. <%= User.find(res.user_id).name %> :&nbsp;</strong>
+          <div style="overflow: hidden">
+            <%= res.content %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <% if @restaurant.image.attached? %>
-    <%= image_tag @restaurant.image %>
-  <% end %>
-</p>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
