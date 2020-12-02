@@ -24,12 +24,13 @@
             <% end %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<%= users_show_path %>">Show profile</a>
             <a class="dropdown-item" href="<%= edit_user_registration_path %>">Edit profile</a>
             <% if current_user.isAdmin %>
               <a class="dropdown-item" href="<%= restaurants_path %>">Restaurant</a>
             <% end %>
             <div class="dropdown-divider"></div>
-            <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", method: :delete %>
+            <%= link_to "Log out",destroy_user_session_path, class: "dropdown-item", method: :delete %>
           </div>
         </li>
       <% end %>
