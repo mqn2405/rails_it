@@ -14,7 +14,7 @@
     </div>
     <p>
   <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar %>
+    <%= image_tag @user.avatar , class: "image_show"%>
   <% end %>
     </p>
     <div class="form-group">

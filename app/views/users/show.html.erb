@@ -7,7 +7,7 @@
 <%= @user.age %>
 <p>
   <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar %>
+    <%= image_tag @user.avatar, class: "image_show" %>
   <% end %>
 </p>
 
