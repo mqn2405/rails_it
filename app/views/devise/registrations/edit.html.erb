@@ -12,6 +12,11 @@
       <%= f.label :age%>
       <%= f.number_field :age, class: "form-control"%>
     </div>
+    <p>
+  <% if @user.avatar.attached? %>
+    <%= image_tag @user.avatar %>
+  <% end %>
+    </p>
     <div class="form-group">
       <%= f.label :avatar %>
       <%= f.file_field :avatar %>
