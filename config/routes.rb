@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   devise_scope :user do  
      get '/users/sign_out' => 'devise/sessions#destroy'     
   end
+  get 'like/:id', to: "likes#like", as: 'like'
+  get 'unlike/:id', to: "likes#unlike", as: 'unlike'
   # get 'users/show'
   get 'users/show/:id', to: "users#show", as: 'users_show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

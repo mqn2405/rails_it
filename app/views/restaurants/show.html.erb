@@ -49,6 +49,16 @@
           <div style="overflow: hidden">
             <%= res.content %>
           </div>
+          <% if user_signed_in? %>
+            <div>
+                <%= link_to res.isLike(current_user) ?  like_path(res.id) : unlike_path(res.id) do %>
+                  <i class="far fa-thumbs-up" style="color: <%= "gray" if res.isLike(current_user) %>"></i>
+                <% end %>
+                (<%= res.likes.count %>)
+            </div>
+          <% else %>
+            <i class="far fa-thumbs-up" style="color: blue"></i>(<%= res.likes.count %>)
+          <% end %>
         </div>
       <% end %>
     <% end %>

@@ -12,20 +12,20 @@
       </div>
     <% end %>
     <div class="form-group row">
-      <%= form.label :name, class: "col-sm-2 col-form-label" %>
-      <div class="col-sm-10">
+      <%= form.label :name, class: "col-sm-3 col-form-label" %>
+      <div class="col-sm-9">
         <%= form.text_field :name, class: "form-control" %>
       </div>
     </div>
     <div class="form-group row">
-      <%= form.label :address, class: "col-sm-2 col-form-label" %>
-      <div class="col-sm-10">
+      <%= form.label :address, class: "col-sm-3 col-form-label" %>
+      <div class="col-sm-9">
         <%= form.text_field :address, class: "form-control" %>
       </div>
     </div>
     <div class="form-group row">
-      <%= form.label :image, class: "col-sm-2 col-form-label" %>
-      <div class="col-sm-10">
+      <%= form.label :image, class: "col-sm-3 col-form-label" %>
+      <div class="col-sm-9">
         <% if @restaurant.image.attached? %>
           <br>
           <%= image_tag @restaurant.image, class: "image_show" %>
@@ -36,8 +36,8 @@
       </div>
     </div>
     <div class="form-group row">
-      <%= form.label :description, class: "col-sm-2 col-form-label" %>
-      <div class="col-sm-10">
+      <%= form.label :description, class: "col-sm-3 col-form-label" %>
+      <div class="col-sm-9">
         <%= form.text_field :description, class: "form-control" %>
       </div>
     </div>
