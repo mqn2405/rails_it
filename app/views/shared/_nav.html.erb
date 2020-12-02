@@ -24,7 +24,7 @@
             <% end %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<%= users_show_path %>">Show profile</a>
+            <a class="dropdown-item" href="<%= users_show_path(current_user.id) %>">Show profile</a>
             <a class="dropdown-item" href="<%= edit_user_registration_path %>">Edit profile</a>
             <% if current_user.isAdmin %>
               <a class="dropdown-item" href="<%= restaurants_path %>">Restaurant</a>
