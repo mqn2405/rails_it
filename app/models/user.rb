@@ -6,4 +6,5 @@ class User < ApplicationRecord
          	has_one_attached :avatar
   validates :name, presence: true
   validates :age, presence: true
+  has_many :restaurant_reviews
 end

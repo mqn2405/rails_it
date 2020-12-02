@@ -1,3 +1,18 @@
-
-<h1>Welcome to review restaurant page</h1>
+<div class="row" >
+  <% @restaurants.each do |restaurant| %>
+    <div class="col-3 card " style="margin: 2rem; width: 20rem; height: 20rem">
+      <%= image_tag restaurant.image, class: "card-img-top"%>
+      <div class="card-body">
+        <h5 class="card-title"><b><%= restaurant.name %></b></h5>
+        <p class="card-text">
+          Address: <%= restaurant.address %><br>
+          Description: <%= restaurant.description %>
+        </p>
+        <div class="row justify-content-center">
+          <a href="<%= restaurant_path(restaurant.id) %>" class="btn btn-primary">Reviews</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 

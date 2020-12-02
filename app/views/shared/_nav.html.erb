@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="<%= root_path %>"><h1 style="color: red">RS</h1></a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    </ul>
+    <ul class="navbar-nav">
+      <% unless user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_session_path %>">
+            <button class="btn btn-primary">Login</button>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_registration_path %>">
+            <button class="btn btn-primary">Sign up</button>
+          </a>
+        </li>
+      <% else %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.name.nil? ? current_user.email : current_user.name %>
+            <% if current_user.isAdmin == true %>
+              (Admin)
+            <% end %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<%= edit_user_registration_path %>">Edit profile</a>
+            <% if current_user.isAdmin %>
+              <a class="dropdown-item" href="<%= restaurants_path %>">Restaurant</a>
+            <% end %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", method: :delete %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+<% unless notice.nil? %>
+  <div class="alert alert-success" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
+<% unless alert.nil? %>
+  <div class="alert alert-danger" role="alert">
+    <%= alert %>
+  </div>
+<% end %>
