@@ -1,7 +1,9 @@
 <div class="row" >
   <% @restaurants.each do |restaurant| %>
-    <div class="col-3 card " style="margin: 2rem; width: 20rem; height: 20rem">
-      <%= image_tag restaurant.image, class: "card-img-top"%>
+    <div class="col-3 card " style="margin: 2rem; width: 20rem; min-height: 20rem">
+      <% if restaurant.image.attached? %>
+        <%= image_tag restaurant.image, class: "card-img-top"%>
+      <% end %>
       <div class="card-body">
         <h5 class="card-title"><b><%= restaurant.name %></b></h5>
         <p class="card-text">
